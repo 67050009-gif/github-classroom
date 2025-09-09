@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Responsive Table</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;          /* ครอบเต็มความกว้าง */
+      height: 100vh;        /* สูงเต็มหน้าจอ */
+      table-layout: fixed;  /* ทำให้ cell แบ่งพื้นที่เท่ากัน */
+    }
+    td {
+      text-align: center;
+      font-weight: bold;
+      color: #333;
+      border: 2px solid #888;
+      word-wrap: break-word; /* ถ้าตัวอักษรยาวจะตัดบรรทัด */
+    }
+    .left {
+      background: #c7d38d;  /* เขียวอ่อน */
+    }
+    .right {
+      background: #f4b6aa;  /* พีชอ่อน */
+    }
+
+    /* กรณีจอแคบ (มือถือ) → ให้ cell เรียงบน-ล่าง */
+    @media (max-width: 600px) {
+      table, tr, td {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      td {
+        min-height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td class="left">First cell</td>
+      <td class="right">Second cell</td>
+    </tr>
+  </table>
+</body>
+</html>
