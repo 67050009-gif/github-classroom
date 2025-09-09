@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;          /* ครอบเต็มความกว้าง */
+  height: 100vh;        /* สูงเต็มหน้าเว็บ */
+  table-layout: fixed;  /* ทำให้ cell เท่ากัน */
+}
+
+td {
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  border: 2px solid #888;
+  word-wrap: break-word;
+}
+
+.left {
+  background: #c7d38d;  /* เขียวอ่อน */
+}
+
+.right {
+  background: #f4b6aa;  /* พีชอ่อน */
+}
+
+/* ถ้าหน้าจอแคบ (มือถือ) → จัดเรียงบนล่าง */
+@media (max-width: 600px) {
+  table, tr, td {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  td {
+    min-height: 150px;
+  }
+}
