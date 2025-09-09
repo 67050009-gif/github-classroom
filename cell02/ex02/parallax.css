@@ -1,0 +1,45 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Parallax sections */
+.parallax {
+  position: relative;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+.bg1 { background-image: url("ccat.jpg"); }   
+.bg2 { background-image: url("cccat.jpg"); }   
+
+/* Overlay caption */
+.caption {
+  background: rgba(0,0,0,0.4);
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+/* Middle black block */
+.content {
+  height: 40vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24px;
+}
