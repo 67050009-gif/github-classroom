@@ -27,7 +27,7 @@ body {
   gap: 8px;
   background: #4b4df0;
   border-radius: 12px;
-  overflow: visible;   /* ✅ ให้ dropdown โผล่พ้นแถบเมนู */
+  overflow: visible;   
 }
 
 .menu > li {
