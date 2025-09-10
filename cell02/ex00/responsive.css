@@ -5,9 +5,9 @@ body {
 
 table {
   border-collapse: collapse;
-  width: 100%;          /* ครอบเต็มความกว้าง */
-  height: 100vh;        /* สูงเต็มหน้าเว็บ */
-  table-layout: fixed;  /* ทำให้ cell เท่ากัน */
+  width: 100%;          
+  height: 100vh;       
+  table-layout: fixed;  
 }
 
 td {
@@ -19,14 +19,14 @@ td {
 }
 
 .left {
-  background: #c7d38d;  /* เขียวอ่อน */
+  background: #c7d38d;  
 }
 
 .right {
-  background: #f4b6aa;  /* พีชอ่อน */
+  background: #f4b6aa;  
 }
 
-/* ถ้าหน้าจอแคบ (มือถือ) → จัดเรียงบนล่าง */
+
 @media (max-width: 600px) {
   table, tr, td {
     display: block;
