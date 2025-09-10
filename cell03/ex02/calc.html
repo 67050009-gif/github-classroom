@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>It’s over 9000</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f7f8fb;
+    }
+    .card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      width: min(520px, 92vw);
+    }
+    h1 { margin: 0 0 14px; font-size: 20px; }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    input[type="text"], select {
+      flex: 1;
+      min-width: 100px;
+      padding: 10px 12px;
+      font-size: 16px;
+    }
+    input[type="submit"] {
+      flex: 1 1 100%;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .hint { margin-top: 10px; color: #666; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Basic Calculator</h1>
+
+    <form id="calc">
+      <input type="text" id="left"  placeholder="Left (integer ≥ 0)">
+      <select id="op" aria-label="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+      </select>
+      <input type="text" id="right" placeholder="Right (integer ≥ 0)">
+      <input type="submit" value="Try me!">
+    </form>
+
+    <div class="hint">Result appears in an alert and the browser console.</div>
+  </div>
+
+  <script>
+    setInterval(() => { alert('Please, use me...'); }, 30000);
+
+    const form  = document.getElementById('calc');
+    const left  = document.getElementById('left');
+    const right = document.getElementById('right');
+    const op    = document.getElementById('op');
+
+    function isValidInt(v) {
+      if (v.trim() === '') return false;
+      if (!/^\d+$/.test(v.trim())) return false;
+      const n = Number(v);
+      return Number.isInteger(n) && n >= 0;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!isValidInt(left.value) || !isValidInt(right.value)) {
+        alert('Error :(');
+        return;
+      }
+
+      const a = Number(left.value);
+      const b = Number(right.value);
+      const operator = op.value;
+
+      if ((operator === '/' || operator === '%') && b === 0) {
+        console.log("It's over 9000!");
+        alert("It's over 9000!");
+        return;
+      }
+
+      let result;
+      switch (operator) {
+        case '+': result = a + b; break;
+        case '-': result = a - b; break;
+        case '*': result = a * b; break;
+        case '/': result = a / b; break;
+        case '%': result = a % b; break;
+      }
+
+      console.log(result);
+      alert(result);
+    });
+  </script>
+</body>
+</html>
