@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Balloon (jQuery)</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    html,body{height:100%;margin:0}
+    .wrap{height:100%;display:flex;justify-content:center;align-items:center;background:#fafafa}
+    #balloon{
+      width:200px;height:200px;border-radius:50%;
+      background:red; box-shadow:0 12px 30px rgba(0,0,0,.12); cursor:pointer;
+      transition:width .08s, height .08s, background-color .08s;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap"><div id="balloon" title="Click to inflate / Move out to deflate"></div></div>
+
+  <script>
+    $(function () {
+      const $b = $('#balloon');
+      const COLORS = ['red','green','blue'];
+      let ci = 0, size = 200, MIN = 200, MAX = 420;
+
+      function apply(){ $b.css({width:size, height:size, backgroundColor:COLORS[ci]}); }
+
+      $b.on('click', function(){
+        size += 10; ci = (ci+1)%COLORS.length;
+        if(size > MAX){ size = MIN; ci = 0; }
+        apply();
+      });
+
+      $b.on('mouseleave', function(){
+        size = Math.max(MIN, size - 5);
+        ci = (ci - 1 + COLORS.length) % COLORS.length;
+        apply();
+      });
+
+      apply();
+    });
+  </script>
+</body>
+</html>

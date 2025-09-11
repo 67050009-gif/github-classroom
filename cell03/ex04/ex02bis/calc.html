@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>It’s over 9000 (jQuery)</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f7f8fb;font-family:system-ui,Arial}
+    .card{background:#fff;padding:22px;border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.08);width:min(520px,92vw)}
+    h1{margin:0 0 14px;font-size:20px}
+    form{display:flex;flex-wrap:wrap;gap:10px}
+    input[type=text],select{flex:1;min-width:100px;padding:10px 12px;font-size:16px}
+    input[type=submit]{flex:1 1 100%;padding:12px;font-size:16px;cursor:pointer}
+    .hint{margin-top:10px;color:#666;font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Basic Calculator (jQuery)</h1>
+    <form id="calc">
+      <input type="text" id="left"  placeholder="Left (integer ≥ 0)">
+      <select id="op">
+        <option value="+">+</option><option value="-">-</option>
+        <option value="*">*</option><option value="/">/</option><option value="%">%</option>
+      </select>
+      <input type="text" id="right" placeholder="Right (integer ≥ 0)">
+      <input type="submit" value="Try me!">
+    </form>
+    <div class="hint">Result appears in an alert and the browser console.</div>
+  </div>
+
+  <script>
+    setInterval(()=>alert("Please, use me..."), 30000);
+
+    function validInt(v){ return /^\d+$/.test($.trim(v)); }
+
+    $('#calc').on('submit', function(e){
+      e.preventDefault();
+      const aOk = validInt($('#left').val());
+      const bOk = validInt($('#right').val());
+      if(!aOk || !bOk){ alert('Error :('); return; }
+
+      const a = parseInt($('#left').val(),10);
+      const b = parseInt($('#right').val(),10);
+      const op = $('#op').val();
+
+      if((op==='/' || op==='%') && b===0){ console.log("It's over 9000!"); alert("It's over 9000!"); return; }
+
+      let r;
+      if(op==='+') r=a+b; else if(op==='-') r=a-b; else if(op==='*') r=a*b; else if(op==='/') r=a/b; else r=a%b;
+      console.log(r); alert(r);
+    });
+  </script>
+</body>
+</html>
